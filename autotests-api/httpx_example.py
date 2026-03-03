@@ -66,4 +66,4 @@ except httpx.HTTPError as e:
 try :
     response = httpx.get("https://httpbin.org/delay/5", timeout=2)
 except httpx.ReadTimeout :
-    print(f"Проблема")
+    print(f"Проблема с таймаутом")
