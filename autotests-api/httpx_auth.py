@@ -33,5 +33,5 @@ print(me_header)
 user_me = httpx.get("http://localhost:8000/api/v1/users/me", headers = me_header)
 me_data = user_me.json()
 
-print(f"Статус запроса me {user_me.status_code}")
-print(f"Это json ответа запроса me {me_data}")
+print(f"Статус запроса me : {user_me.status_code}")
+print(f"Это json ответа запроса me : {me_data}")
