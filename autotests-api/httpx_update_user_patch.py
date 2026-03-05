@@ -37,5 +37,5 @@ patch_header = {
 patch_user_response = httpx.patch(f"http://localhost:8000/api/v1/users/{create_user_data['user']['id']}", headers = patch_header, json = patch_user_payload)
 patch_user_response_data = patch_user_response.json()
 print(f"patch_user_response_data : {patch_user_response_data}")
-print(f"Статус код апдейта : {patch_user_response.status_code}")
+print(f"Статус код апдейта через patch : {patch_user_response.status_code}")
 print(f"Новый результат lastName: {patch_user_response_data['user']['lastName']}")
