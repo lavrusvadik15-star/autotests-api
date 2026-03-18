@@ -38,6 +38,7 @@ class FilesClient(APIClient)  :
         return self.post(
             "/api/v1/files",
             data = request,
+            #реквест возьмет из своего класса путь и подставим его сюда из реквеста
             files = {"upload_file" : open(request['upload_file'], 'rb')},
         )
     def delete_file_api(self, file_id: str) -> Response:
