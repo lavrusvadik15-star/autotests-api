@@ -9,7 +9,7 @@ class CreateFileRequestDict(TypedDict) :
     Описание структуры запроса на создание файла.
     """
     filename: str
-    #любая
+    #любая директория
     directory: str
     #путь к файлу на локальной машине, который будет загружен
     upload_file : str
