@@ -17,10 +17,16 @@ class PublicUsersCreateRequestDict(TypedDict) :
     middleName: str
 
 class PublicUsersClient(APIClient):
+    """
+    Клиент для работы с публичным API пользователей.
+
+    Предоставляет методы для взаимодействия с эндпоинтами пользователей,
+    доступными без аутентификации (например, регистрация)
+    """
     def create_user_api(self, request:PublicUsersCreateRequestDict ) -> Response :
         """
         Метод создания пользователя (публичный)
         :param request: Словарь с параметрами создания.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post("api/v1/users", json = request)
+        return self.post("/api/v1/users", json = request)
