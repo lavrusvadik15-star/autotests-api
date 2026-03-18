@@ -3,10 +3,6 @@ from typing import TypedDict
 
 from httpx import Response
 
-
-
-
-
 # Query-параметры (или параметры запроса) – это часть URL, которая передается после знака ? и содержит пары ключ=значение. Несколько параметров передаются через &.
 # Пример:
 # http://some.url?key1=value1&key2=value2
@@ -15,9 +11,11 @@ from httpx import Response
 # params = {"userId": "12345"}
 # Этот словарь будет преобразован в строку запроса:
 #?userId=12345
+
 class GetCoursesQueryDict(TypedDict):
     """
-    Описание структуры запроса на получение списка курсов.
+    Описание структуры запроса на получение списка курсов,
+    которые мы передадим в query параметр функции, а оттуда подставим в запрос
     """
     userId: str
 
@@ -58,7 +56,7 @@ class CoursesClient(APIClient):
         return self.get("/api/v1/courses", params=query)
     def get_course_api(self, course_id: str) -> Response:
         """
-        Метод получения курса.
+        Метод получения ОДНОГО курса по айдишнику.
 
         :param course_id: Идентификатор курса.
         :return: Ответ от сервера в виде объекта httpx.Response
