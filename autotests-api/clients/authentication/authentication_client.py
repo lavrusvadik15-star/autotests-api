@@ -76,3 +76,8 @@ def get_authentication_client() -> AuthenticationClient:
     #НЕ ЗАБЫВАТЬ ЕГО ИМПОРТИРОВАТЬ ВНАЧАЛЕ (хотя и подтянется само)
     return AuthenticationClient(client=get_public_http_client())
 
+#пример использования
+a = get_authentication_client()
+b = a.login_api({  "email": "user@example.com",
+  "password": "string"})
+print(b.json())
