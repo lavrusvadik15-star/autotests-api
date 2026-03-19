@@ -3,6 +3,9 @@ from typing import TypedDict
 
 from httpx import Response
 
+from clients.private_http_builder import AuthenticationUserDict, get_private_http_client
+
+
 # Query-параметры (или параметры запроса) – это часть URL, которая передается после знака ? и содержит пары ключ=значение. Несколько параметров передаются через &.
 # Пример:
 # http://some.url?key1=value1&key2=value2
@@ -91,3 +94,12 @@ class CoursesClient(APIClient):
         :return: Ответ от сервера в виде объекта httpx.Response
         """
         return self.delete(f"/api/v1/courses/{course_id}")
+
+# Добавляем builder для CoursesClient
+def get_courses_client(user: AuthenticationUserDict) -> CoursesClient:
+    """
+    Функция создаёт экземпляр CoursesClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию CoursesClient.
+    """
+    return CoursesClient(client=get_private_http_client(user))
