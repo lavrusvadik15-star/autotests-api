@@ -38,19 +38,3 @@ def get_public_users_client() -> PublicUsersClient:
     :return: Готовый к использованию PublicUsersClient.
     """
     return PublicUsersClient(client=get_public_http_client())
-
-
-
-
-#Пример использования
-from tools.fakers import get_random_email
-
-test = get_public_users_client()
-itog = test.create_user_api({
-  "email": get_random_email(),
-  "password": "string",
-  "lastName": "string",
-  "firstName": "string",
-  "middleName": "string"
-})
-print(itog.json())

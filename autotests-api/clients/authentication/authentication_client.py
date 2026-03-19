@@ -60,6 +60,7 @@ class AuthenticationClient(APIClient):
         :return: Ответ от сервера в виде объекта httpx.Response
         """
         return self.post("/api/v1/authentication/refresh", json=request)
+
     #Лайфхак - если нам не нужен полный респонс от логина - создадим еще одну функцию
     def login(self, request: LoginRequestDict) -> LoginResponseDict:
         response = self.login_api(request) # тут мы отправляем запрос на логин
@@ -75,9 +76,3 @@ def get_authentication_client() -> AuthenticationClient:
     #В AuthenticationClient как базовый передали клиент из билдера публичного клиента, т.к. его запросы не требуют авторизации
     #НЕ ЗАБЫВАТЬ ЕГО ИМПОРТИРОВАТЬ ВНАЧАЛЕ (хотя и подтянется само)
     return AuthenticationClient(client=get_public_http_client())
-
-#пример использования
-a = get_authentication_client()
-b = a.login_api({  "email": "user@example.com",
-  "password": "string"})
-print(b.json())
